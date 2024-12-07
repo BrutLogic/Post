@@ -28,7 +28,7 @@ So, here I am, I believe I have great ideas about agents but I'm a prisoner to m
 
 Following [my previous post]\([https://www.reddit.com/r/AI\_Agents/comments/1gsqt1v/im\_close\_to\_a\_productivity\_explosion/](https://www.reddit.com/r/AI_Agents/comments/1gsqt1v/im_close_to_a_productivity_explosion/)) I was asked a bunch of time where my stuff could be found.
 
-I'm about to share it all. First, with a Discord community, then I'll
+I'm about to share it all. First, with a Discord community, then I'll decide with that community whether or not I should open source what.
 
 ## The intuition
 
@@ -154,11 +154,23 @@ If you think about the daily workflow of a coder, you can break it down in sub-w
 
 **Real life illustration**:
 
+On a given day
 
+- I check if I have Jira tickets in "doing" (If you don't know Jira, it's a tool where "Tickets" represent a task, a change to make to a project, eg: \`Design and send a mail when user subscribes\`
+- If none, I take one is state \`TODO\`
+- I gather its id/title/description
+- I ask myself what project/git repo it's about
+- I set `git` to the correct state (if you don't know what `git` is, it's a version control system that tracks changes in code and allows for collaborative work while managing different versions of a project. A "repo", is basically a project.).
+  - I make sure I don't have uncommited changes
+  - I refresh the repo from the server
+  - I create a new branch with the name of the Jira ticket
+- I ask myself if what the ticket is about is anything like things that already exist on the project
+- I identify the files to create, the files to take inspiration from (similar/related feature). Basically, keeping my example `Design and send a mail when user subscribes`, I'll look at files where mails are sent already, I'll look at existing mail templates...
+- I'll mentally (or with notes) breakdown the actions to do and what I expect from the project once the feature is implemented. It could look like:
+  - [ ] create `src/emails/confirm_subscription.html` looking at `src/emails/welcome.html`
+  - [ ] in `src/handlers/purchase/subscribe.py`, update the function `on_subscribe` adding `send_mail(user, "confirm_subscription")`
+  - [ ] Try subscribing on the dev environment
+  - [ ] Make sure I received the mail and everything looks fine (company's logo, user name, formulation...)
+... I could go on but you get the idea.
 
-
-
-
-
-
-
+#### What would be the control flow to automate that ?
