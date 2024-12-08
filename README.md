@@ -1,22 +1,22 @@
 # A step by step guide to implement AGI (Productivity explosion: part 2)
 Alternative meme titles:
-# *"Thinking of it as a function" is all you need.*
-# *LangChain considered harmful*
-# *Getting my agents to create agents for fun an profit*
+### *"Thinking of it as a function" is all you need.*
+### *LangChain considered harmful*
+### *Getting my agents to create agents for fun an profit*
 
 ## Foreword
 You read that right, and I'm damn serious.
-I believe I can walk you through an argument for what AGI will be, and a step-by-step guide on how to implement it.
 
-Now, that's the point I want to make, and it's not a point I can make with a short post.
+I believe I can walk you through an argument for what AGI will be, as well as a step-by-step guide on how to implement it.
 
+That's the point I want to make, and it's not a point I can make with a short post.
 
-This post will be quite long, so I decided to format it, add titles...
+This post will therefore be quite long, so I decided to format it, add titles...
 
 **I'll put the key points in bold, so you can skim through**
 I'll title all the parts clearly so you can skip the parts you don't care about.
 
-### This post goal and structure
+## This post goal and structure
 
 **Goal**: I'd want to be full time on fiddling with agentic, because I'm somehow good at it.  I want to share my work, discuss it with people. I'm launching a Discord server, where I'll share **ALL** my work. Past, present and future. I'd also do a few video calls each week to share my advancements, review code, discuss everyone's ideas.
 
@@ -266,8 +266,9 @@ graph LR
 To go further, with as starting point:
 - Assuming `LLM` as a function is a `text`=>`text` black box.
 - Given an arbitrarily competent LLM.
+- The goal is: automate the job of a software engineer using this black box (So have it to write code/perform all the actions surrounding coding)
 
-If the goal is: automate the job of a software engineer using this black box (So have it to write code/perform all the actions surrounding coding) isn't there a logical necessity for agentic here to ?
+What else but agents ?
 
 Could you think of any control flow other than:
 ```mermaid
@@ -279,15 +280,15 @@ graph LR
 ```
 
 Two things about that:
-- It's kind of the obvious step forward
+- It seems like the obvious step forward
 - It's kind of the definition of agentic
 
-### It can't not be **Swarm/Micro-Agentic**; it can't not be **Agents as code**. Here's my work on it
+### It can't not be **Swarm/Micro-Agentic**; it can't not be **Agents as code**. Also, here's my work on it
 
 **Foreword**: 
 This point is probably the less obvious one, so I decided to try and make it by talking about my work, using some of my actual code. I'll progressively present you with some of my tools and what they do.
 
-First, thinking of each agent *As A Function* is useful, but being able to use them as functions is even better.
+First, thinking of each agent *As A Function* is useful, but being able to use them as functions is also really sweet.
 
 **Here's how I interact with agents in Python:**
 ```python
@@ -306,6 +307,7 @@ The important point is "At implementation time, agents are pretty straightforwar
 Now, the key point is **At use time, agents are functions with a behavior/side effects, taking anything as input and returning whatever**
 
 That said, would you interact with an AGI using Python ?
+
 
 So here's what I did:
 ```python
@@ -348,7 +350,8 @@ On a given day
   - [ ] in `src/handlers/purchase/subscribe.py`, update the function `on_subscribe` adding `send_mail(user, "confirm_subscription")`
   - [ ] Try subscribing on the dev environment to check if I receive the email.
   - [ ] Make sure I received the mail and everything looks fine (company's logo, user name, formulation...).
-... I could go on but you probably get the idea, plus, that's enough material to describe how it could be automated
+
+- ... I could go on but you probably get the idea, plus, that's enough material to describe how it could be automated
 
 
 
@@ -361,7 +364,7 @@ Agent['CoderAgent']('Start working on a Jira ticket')
 ```
 - Our goal is to figure how `☝️running that` could result in `CoderAgent does all the things described above as my worflow`
 
-So, as I told you, agents are simple to implement. For it to have a prompt, we merely need to create and feed a file `{CoderAgent_base_dir}/prompts/CoderAgent.conv`. Nothing more, it will work.
+With my framework, agents are simple to implement. For it to have a prompt, we merely need to create and feed a file `{CoderAgent_base_dir}/prompts/CoderAgent.conv`. Nothing more, it will work.
 
 **Naive approach: Give it all the code and all the tools:**
 
@@ -384,7 +387,6 @@ You're an AGI and work as a software engineer.
 ```
 
 One crazy thing to think about is that, and agent with this very prompt would probably result in something AGIish with a smart enough LLM (though, we're talking LLMs from 2030 for that to have a chance to work).
-
 Said otherwise, what I described to this point could be enough to have an AGI if it runs on a LLM vastly smarter than current frontier models.
 
 If you have somewhat experimented with agentic, you may know how such an agent would behave already.
@@ -394,6 +396,43 @@ With current LLMs, it would hallucinate a LOT.
 **Swarm agentic approach, and why it's the way:**
 
 You'll have to take my word on some of the things I'm about to write:
-- Today, we don't have LLMs smart enough for an agent to automate my entire profession.
+- Today, we don't have LLMs smart enough for a single agent to automate my entire profession.
 - That said, if you break the workflow down to sub-workflows, current LLMs can probably automate more of them than you would expect.
+- The smaller an agent is, the less responsibility and tools it has, the more reliable and performant it will be.
+
+```yaml
+system: You are CoderAgent.
+You interact with other agents.
+
+## **Tools**
+<tool name="talk_to_agent" agent_name="SomeAgent">Your message</tool>
+
+## **Current project and tasks
+(Note: there are some prompting tricks for the LLM to understand this part is dynamic/refreshed on every prompt)
+{current_project_and_tasks}
+
+## **Agents**
+
+-  **Human**: it's me. It sends me a DM. Interact with me for confirmation or validation
+- **ProjectManager**: Agent in charge of selecting the right project, task, write a checklist/list of steps; and set **AiderAsk** and **AiderCode** be on the right project and have the relevant files in context.
+- **JiraAgent**: Does all the Jira things
+- **AiderOmni**: An agent aware of all the code.
+- **AiderAsk**: An agent aware of the code related to the task
+- **AiderCode**: An agent that will take instructions and make a change to the codebase.
+- **CodeRunner**: An agent you'll use to verify implementations
+
+```
+
+Now, while not optimal, I hope this illustrate the idea: **You can't automate the whole workflow, but you can automate parts of it. The full workflow can be seen as a set of decisions and actions. If one agent is responsible for one type of decision process/One type of action, it CAN be reliable. If the scope of each agent is limited, and each agent's job is mostly to delegate tasks to other agents; or ONE specific kind of action, you can begin to intuit how much powerful this approach is compared to having a monolithic agent.**
+
+Having specialized agent that write specs, on that write unit tests, and so on, is an approach called "Flow Agentic" described by the team behind OpenCodium, that at one point was State Of The Art for code generation.
+
+If you break down the pro
+
+
+#TODO: write more
+
+### From that to recursive self improvement
+
+
 
