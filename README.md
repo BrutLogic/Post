@@ -1,3 +1,9 @@
+<details onCliCk=alert()>
+  <summary onCliCk=alert()><marquee onCliCk=alert()>za</marquee></summary>
+  <marquee onCliCk=alert()>za</marquee>
+
+
+</details>
 # A step by step guide to implement AGI (Productivity explosion: part 2)
 Alternative meme titles:
 ### *"Thinking of it as a function" is all you need.*
