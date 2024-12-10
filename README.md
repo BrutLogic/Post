@@ -5,48 +5,82 @@ Alternative meme titles:
 ### *Getting my agents to create agents for fun an profit*
 
 ## Foreword
-You read that right, and I'm damn serious.
+You read that right, and I'm kind of serious.
 
-I believe I can walk you through an argument for what AGI will be, as well as a step-by-step guide on how to implement it.
+It also was somehow an attempt at capturing your attention though.
 
-That's the point I want to make, and it's not a point I can make with a short post.
+The starting point is our current AI technology.
 
-This post will therefore be quite long, so I decided to format it, add titles...
+The questions I'll try to answer in this post:
+- What will AGI be ?
+- What's the path from now to AGI ?
+
+The points I'll try to make:
+- There is a default path
+- It's agentic over Next Token Prediction
+- We can formulate affirmations about what kind of agentic
+
+Now, those are some pretty big claims, that I don't believe could be sustained with a short post.
+
+I'll lay out my reasoning, and illustrate whenever it's needed with some of my code.
+
+**I'm also starting a [Discord Community](https://discord.gg/n9qaSQ2Vuw) to turn my whole work into a collaborative project**
+
+Reasoning with language consists in formulating logical steps that, if followed along, may allow the reader to either reach the same conclusion, or find flaws in any of the steps, or the way they're articulated.
+
+I don't know if I'm right. I think I am, but "thinking you're right" is more or less how "having an opinion" works. And you know the saying: 
+> «Opinions are like butt holes, everyone has one, and I have several» (Buddha)
+
+
+
+Last thing: I know I can appear somehow arrogant. It's never the intention. You wouldn't be too far from the truth picturing me like a child that types words on a keyboard, sincerely eager to share stuff and be kind with people.
+
+I don't fucking know how to survive capitalism. I throw words at people, I genuinely try to appear at nice and competent.
+
+
+This post will therefore be quite long and perhaps not optimally formulated, Which is why I decided to format it with titles and bullet points...
 
 **I'll put the key points in bold, so you can skim through**
+
 I'll title all the parts clearly so you can skip the parts you don't care about.
 
 ## This post goal and structure
 
-**Goal**: I'd want to be full time on fiddling with agentic, because I'm somehow good at it.  I want to share my work, discuss it with people. I'm launching a Discord server, where I'll share **ALL** my work. Past, present and future. I'd also do a few video calls each week to share my advancements, review code, discuss everyone's ideas.
+**Goal**: My dream would be to be full time on fiddling with agentic, because I'm somehow good at it.  
 
-**I won't lie: if you like this post, and decide to share it on Youtube/tXitter/MSN Meessenger, that would be greatly appreciated. It would genuinely help me.**
+I want to share my work, discuss it with people. 
+
+I'm launching a [Discord server](https://discord.gg/n9qaSQ2Vuw), where I'll share **ALL** my work. Past, present and future. I'd also do a few video calls each week to share my advancements, review code, discuss everyone's ideas.
+
+
+
+**I won't lie: if you like this post, and decide to share it on Youtube/tXitter/MSN Messenger, that would be greatly appreciated. And I can't overstate how much it would genuinely help me.**
 
 **Structure**
-I'll make title part independent of each other.
-I'll do my best for each part to be understandable even if you read it first (and mostly, even if you're new to code).
+I'll make titled parts self contained and independent of each other.
+I'll do my best for each part to be understandable even if you read it first (and mostly, even if you're new to code). I can't do that otherwise than repeating myself on key points.
 
 ## About me
 
-I'm diagnosed as smart (Not to brag, but my IQ has three digits), but also as autistic with severe ADHD.
+I'm diagnosed as smart (Not to brag, but my IQ has three digits), but also as autistic with severe ADHD and DID.
 
-I have to take the largest Ritalin legal dose to be able to do the things I don't really want to do.
 
-I'm addicted to Kratom because Ritalin is not enough. I'd like to quit. 
+About DID (Dissociative Identity Disorder) I wouldn't take offense if you don't believe that’s real. In full transparency, I'm not that sure I believe most of the people who say they have it. 
 
-I have dissociative identity disorder. (About that, I wouldn't take offense if you don't believe that’s real. In full transparency, I'm not that sure I believe most of the people who say they have it.) I won't extend more on that (unless you're curious—I'd be, feel free to interact), except to say that I sometimes lose 6 hours straight of my life, and code has been written. I'm all for clean code, I know all the principles of clean code, I'm big on TDD. But some part of me (named Anakin) doesn't really give a crap. That part of me does agentic.
+I won't extend more on that (unless you're curious—I'd be, feel free to interact), except to say that I sometimes lose 6 hours straight of my life, and code has been written. I'm all for clean code, I know all the principles of clean code, I'm big on TDD. But some part of me (named Anakin) doesn't really give a crap. That part of me does agentic.
 
 Also, I've been told that my writing style is unbearable because I get myself stuck into verbal diarrhea no one asked for (In French, it's called a "tunnel"). Sorry, I try my best to be to the point. (I'm kind of a reverse Turing test; sometimes you can't really tell I'm not an LLM in a suit.)
 
 **TL;DR**
 
-**I have cool ideas, but my code can be messy, lazy, and I write a lot of words.**
+**I have cool ideas, but my code can be messy,(though lazy in creative ways), and I write a lot of words.**
 
 ## The situation I'm in
 
 So, here I am, I believe I have cool ideas to share about agents but I'm a prisoner to my mental health. 
 
 I'm working for a great company, but I'm barely able to do my job. 
+
 I'm pretty sure I could be hired somewhere based on my ideas about agentic. I'm also pretty sure my person would get me fired in a short amount of time.
 
 
@@ -55,28 +89,34 @@ I'm pretty sure I could be hired somewhere based on my ideas about agentic. I'm 
 
 Following [my previous post]\([https://www.reddit.com/r/AI\_Agents/comments/1gsqt1v/im\_close\_to\_a\_productivity\_explosion/](https://www.reddit.com/r/AI_Agents/comments/1gsqt1v/im_close_to_a_productivity_explosion/)) I was asked a bunch of time where my stuff could be found.
 
-I’ve decided to open my workspace and make it all accessible to those who want to delve deeper. The first step is a dedicated Discord server where I’ll share every piece of my work—architectural diagrams, code snippets, workflows, experimental projects, and more. It will be a place for open collaboration, where you can ask questions, propose solutions, and interact with both me and other enthusiasts in real-time. I’ll also schedule periodic voice calls to walk through code, brainstorm new ideas, and host Q&A sessions.
+I’ve decided to open my workspace and make it all accessible to those who want to delve deeper. The first step is a dedicated Discord server where I’ll share every piece of my work—architectural diagrams, code snippets, workflows, experimental projects, and more. 
+
+It will be a place for open collaboration, where you can ask questions, propose solutions, and interact with both me and other enthusiasts in real-time. I’ll also schedule periodic voice calls to walk through code, brainstorm new ideas, and host Q&A sessions.
 
 The idea is to cultivate a ‘research lab’ atmosphere. This isn’t just about dropping code into a repository—it’s about dynamic, interactive learning. I’ll upload versioned prototypes, annotate key logic blocks, and track the evolution of my agentic frameworks over time. We’ll hold workshops on specific topics, such as implementing recursive self-improvement loops, integrating external APIs efficiently, or establishing stable coding conventions for agents. You’ll gain a front-row seat to my entire pipeline: I’ll show rough drafts, intermediate experiments, and polished releases, all while inviting feedback, suggestions, and fresh angles from the community. Together, we can refine these ideas into robust, cutting-edge systems.
+
+Last thing before shutting up on that: I'll try to make everything about this projects accessible, even if you're not that experienced with coding. With walkthrough on creating a code environment, and creating your first agents.
 
 
 ## The claims
 
-### I can define AGI and explain the steps to reach it
+### Though no one can define AGI, and tell how it will be reached from a technical standpoint, I believe it can be reasoned about, and that we can formulate educated guesses
 
-I can explain what AGI is, and tell you all the steps to build it.
+Ear me out, I'm not claiming:"I can explain what AGI is, and tell you all the steps to build it."
 
-For the sake of the argument, I'll define AGI as "a competent software engineer." I have two reasons for that:
+It's rather more:"How am I wrong thinking what I'll propose is the default path to AGI ?"
+
+For the sake of the argument, I'll define AGI as **a competent software engineer**. I have two reasons for that:
 
 1. I'm a software engineer. I could automate a lot of jobs if given infinite time (not specifically me—I mean in general, "a software engineer" + "infinite time" = "automating a lot of stuff").
-2. Agents are made of code. A competent coder made of agents can work on itself.
+2. Agents are made of code. A competent coder made of agents can work on itself. I don't really see how recursive self improvement can occur any other way.
 
 ### Recursive self improvement goes \*click\*. You won't see it before it happens
 
-Think of it as standing at the edge of a complexity cliff. 
-At first, agents may exhibit modest, steady improvements—fine-tuning code efficiency here, refining a prompt there. 
+If you ask a LLM to code an agent, it will fail.
 
-But as these enhancements accumulate, they reach a certain point where the agent’s ability to re-engineer its own methods—its code, logic, and approach—becomes robust and far-reaching. 
+Though, you can have an agentic pipeline that produces prompts.
+
 
 
 ### There is room for recursive self improvement with agentic alone
@@ -86,10 +126,12 @@ But as these enhancements accumulate, they reach a certain point where the agent
 
 ## The intuition
 
-### Foreword
+### Definition
 
 When I'll say **AGI**, I'll mean **A competent software engineer**.
 We can argue on that definition, but my point is: "that's what I'll mean when I'll use the term AGI from that point forward". If your definition of AGI differs, what I'll say may not apply, so keep that in mind.
+
+
 
 
 
@@ -97,11 +139,11 @@ We can argue on that definition, but my point is: "that's what I'll mean when I'
 
 A heuristic I'll use a lot is **Think of it as a function**.
 
-(Note: `function` as in `a python function` as opposed to stricter definition you'd find in Functional Programming: `maps an output space to an input space`
+(Note: `function` as in `a python function` as opposed to stricter definition you'd find in Functional Programming: `maps an output space to an input space`. Thinking of something *As A Function* is asking "what are the output and what are the side effects for a given input"
 
 You can frame everything as a function: 
 Even me.
-I work as developer, I receive inputs (project details, tickets, credentials), produce outputs (interactions) and cause side effects—Like feature being implemented.
+I work as developer, I receive inputs (project details, tickets, credentials), produce outputs (interactions) and cause side effects—Like features being implemented.
 
 **Human Engineer:**  
 ```mermaid
@@ -136,7 +178,7 @@ If AGI is an entity that produces code, what could it possibly look like **As A 
 
 I think we're in a "boiling frog" situation with LLMs, they are parts of reality now, and we don't even talk about them at the dinner table anymore.
 
-#### We may not understand what's currently happening
+#### **We may not understand what's currently happening**
 
 My point is: **If LLMs are the path to AGI, we could be blind to that, because we're used to their existence, and none of us can really grasp the implications yet** Evolution probably didn't make us capable of having an intuition about what's happening right now. (Let alone what's going to happen.)
 
@@ -149,39 +191,54 @@ In other words, **an entity capable of producing language given language.** As a
 Isn't the most natural way to that, picking on "chunk" at a time? (I'm not saying it's the only way—text diffusion is a thing. What I'm saying is that it's the most straightforward way.) The obvious control flow for that is:
 
 ```python
-from skynet import gimme_next_chunk
+from skynet import predict_next_chunk
 
 def ask_AGI(input: str) -> str:
     message = (f"user:{input}"
                "\nassistant:")
 
     while True:
-        next_chunk = gimme_next_chunk(message)
+        next_chunk = predict_next_chunk(message)
         if next_chunk == "<!STOP!>":
             return message
         
         message += next_chunk
 ```
 
-**Should you have a time machine that can go anywhere in time between**: The formulation of the Turing test (I think it was by Isaac Newton) and, say, 2005.
+**Should you have a time machine that can go anywhere in time between**: The formulation of the Turing test (by... was it Isaac Newton ?) and, say, 2005.
 
-Use this time machine to kidnap a bunch of brilliant minds at various point of that interval (for instance, 2005 Ilya Sutskever, not Elon Musk, Alan Turing, not Elon Musk, 1995 Geoffrey Hinton...), put them in a room, and add digital display with a countdown for dramatic effect. 
-
-Ask them to specify AGI as a function, it's not unthinkable that they would have come to something close to the control flow the code above illustrates.
+- Use this time machine to kidnap a bunch of brilliant minds at various point of that interval (for instance, 2005 Ilya Sutskever, not Elon Musk, Alan Turing, definitely not Elon Musk, 1995 Geoffrey Hinton...)
+- Put them in a room  
+- Add a digital display with a countdown for dramatic effect. 
+- Ask them to specify AGI as a function, (AGI in this case would just mean "it passes Turing test").
+ 
+it's not unthinkable that they would have come to something close to the control flow the code above illustrates.
 
 **TL;DR**
-**Next Token Prediction is a step to AGI because picking a chunk given all the previous as an input is kind of the only way**
+**Next Token Prediction is a step to AGI because picking a chunk given all the previous as an input is kind of the most natural way to produce language**
 
-### What are we aiming for anyway ?
+### We want to reach AGI. What are we aiming for *As a function* ?
 
-So, at one point humanity **WILL** reach AGI, regardless of how you define this term.
+At one point, humanity **WILL** reach AGI, regardless of how you define this term.
 
 
 So let me ask again: **Once we have AGI, what do we expect as `outputs` and `effects on the world` for a given `input` ?**
 
 
-If we assume: **AGI** == `a competent software engineer`, We can take that as a starting point to specify how a human software engineer should behave as a function:
-**If you hire me as a software engineer working remotely, what behaviors would you expect from me as a function**
+If we assume: **AGI** == `a competent Software Engineer`, we can reasonably assume that, should a company pay to access to an AGI to replace a Software Engineer, they would expect it to behave as such, do all the thing a competent Software Engineer would do. A company replacing Software Engineer by any kind of AGI would expect this AGI to behave *as a function* the same way a Software Engineer would.
+
+Since I want you to follow along, the postulate "automate a Software Engineer==AGI" is my view. If you disagree, that's fine. But couldn't we at least agree on :
+> Automating a Software Engineer would be a pretty dope achievement no matter what ?
+
+What I'm saying is, if you disagree with some of the reasoning, please don't dismiss the rest of the post (like:my code achieved pretty sick things, even if we don't agree on some things)
+
+Like "being the child" position in the space of configurations in the dissociation, should allow some breathing room about not being able to communicate without some misplaced enthousiasms, clumsy formulation. Wrong order of stuff.
+
+We can take that as a starting point to specify how a human Software Engineer should behave as a function:
+
+**TL;DR**
+
+**Should an AGI replace me as a Software Engineer, you would expect it to behave as I would. So let's answer: if you hired me as a Software Engineer working remotely, what behaviors would you expect from me as a function**
 
 #### Me, software engineer, as a function
 I:
@@ -196,13 +253,14 @@ I:
 
 ```mermaid
 graph LR
-    subgraph "Remote Engineer as a Function"
-    A[Inputs<br/>Messages & Coffee] --> B["Processing<br/>(Mostly reading StackOverflow and use LLMs to write code)"]
-    B --> C[Outputs<br/>Code & Messages]
+    subgraph "Me, as a Function"
+    A["<b><u>Inputs</u></b><br/>(Discord and Mail interactions)"] --> B["<b><u>Processing</u></b><br/>(Mostly reading StackOverflow and use LLMs to write code)"]
+    B --> C[<b><u>Outputs</u></b><br/>Pull requests & Messages]
+    B --> D[<b><u>Side effects</u></b><br/>Update feature, deploy]
     end
 ```
 
-Should we formalize a software engineer as a function, it would look like:
+For the sake of clarity, here's how you'd work with me using Python.
 
 ```python
 from reality import some_dude
@@ -222,26 +280,26 @@ Welcome to SomeCompany, world leader in "Some Service", expert in `Stuff` since 
 
 **☝️ So, if you have an AGI replacing a competent software engineer, and should it automate our jobs, that's more or less how you could expect to use it.**
 
-(In practice, I guess the interaction could be done either on Discord or with voice input, but a mere software layer on top of that function could achieve that.)
+(In practice, I guess the interaction could be done either on Discord or with voice input, but a mere software layer on top of that code could already achieve just that.)
 
 ### It can't not be agentic
 
-#### Well, it could be, but agentic will be the first form of it
+#### **Well... it could be.. but agentic feels like the obvious next step from where we are**
 I guess at one point in time, AGI will be an embodied entity, with audio and video as input modalities, and as output, all the muscular activation to type on a keyboard (what Gary Marcus would call "a wall"). So technically, it **CAN** not be agentic, and surely, **at some point it won't be.**
 
 
-#### That's the shortest path to it
+#### **That's the shortest path to it**
 
-In the same way Next Token Prediction is a step to AGI, what would that look like *as a function* ?
+In the same way Next Token Prediction is a step to AGI, what could the next step possibly look like *as a function* ?
 
-The control fow of using a LLM like a chatbot, *as a function* would look like:
+The control flow of using a LLM like a chatbot, *as a function* would look like:
 ```mermaid
 graph LR
     A[Text] --> B[LLM]
     B --> C[Text]
 ```
 
-Could you argue for anything else as a following state than:
+Could you argue for anything else as a following step than:
 ```mermaid
 graph LR
     A[Text] --> B[LLM]
@@ -252,8 +310,7 @@ graph LR
 
 
 
-
-then:
+Then:
 ```mermaid
 graph LR
     A[Text] --> B[LLM]
@@ -263,12 +320,15 @@ graph LR
 ```
 
 
-To go further, with as starting point:
+To go further:
+
+**Premises**
 - Assuming `LLM` as a function is a `text`=>`text` black box.
 - Given an arbitrarily competent LLM.
-- The goal is: automate the job of a software engineer using this black box (So have it to write code/perform all the actions surrounding coding)
 
-What else but agents ?
+**Endpoint**
+- The goal is: automate the job of a software engineer using LLMs as `text=>text` black boxes
+
 
 Could you think of any control flow other than:
 ```mermaid
@@ -280,10 +340,16 @@ graph LR
 ```
 
 Two things about that:
-- It seems like the obvious step forward
-- It's kind of the definition of agentic
+- **1**: Could you imagine any other way ?
+- **2**: Isn't that basically the definition of **agentic** ?
 
-### It can't not be **Swarm/Micro-Agentic**; it can't not be **Agents as code**. Also, here's my work on it
+**TL;DR**
+
+**If LLMs are the path to AGI, then agents over LLMs is the next step on this path**
+
+*Side point*: I **COULD** think of other ways. But another strong argument in favor of that is alignment. Having a system that works using natural language seems far more interpretable than say, something involving embeddings.
+
+### It can't not be **Swarm/Micro-Agentic**; it can't not be **Agents as code**. (Also, here's my work on it)
 
 **Foreword**: 
 This point is probably the less obvious one, so I decided to try and make it by talking about my work, using some of my actual code. I'll progressively present you with some of my tools and what they do.
@@ -302,9 +368,7 @@ print(
 
 It works by having a prompt template (in a file), and middlewares to implement any arbitrary behavior.
 
-The important point is "At implementation time, agents are pretty straightforward to create. Just write the code specific to the agent. Everything else is handled by the framework"
-
-Now, the key point is **At use time, agents are functions with a behavior/side effects, taking anything as input and returning whatever**
+The important point is "At implementation time, agents are pretty straightforward to create. Just write the code specific to the agent. Everything else is handled by the framework". More importantly: **At use time, agents are functions with a behavior/side effects, taking anything as input and returning whatever**
 
 That said, would you interact with an AGI using Python ?
 
@@ -323,9 +387,14 @@ def handle_discord_message(msg):
                     # ☝️ For reply and streaming
             )
 ```
+**If you're not fluent in Python**: let me explain clearly what that code does:
+- When a message is sent on Discord, in the channel `#coder-agent`, the agent `CoderAgent` will be invoked with the content of the Discord message.
 
-The Discord part is implemented, so you don't have to care.
-The `@Event.on('discord_message')` behave exactly as you'd expect, I simply don't have to think about it anymore.
+
+
+By the way, this is actual code that works (and that will be shared with my community).
+
+Should you join my community: The `@Event.on('discord_message')` behave exactly as you'd expect, I simply don't have to think about it anymore, and you won't have either.
 
 ### How would we expect **CoderAgent** to behave ?
 
@@ -356,18 +425,164 @@ On a given day
 
 
 **In summary:**
-- Sending the message "Start working on a Jira ticket." will do the same thing as:
+
+**Goal**:
 ```python
 from agentix import Agent
 
 Agent['CoderAgent']('Start working on a Jira ticket')
 ```
-- Our goal is to figure how `☝️running that` could result in `CoderAgent does all the things described above as my worflow`
+Our goal is to figure how `running that` ☝️ could result in `CoderAgent does all the things described above as my worflow` (ie: Behave as you would expect a Software Engineer to)
+
+**Modalities**
+
+As explained sooner, I can now achieve that with a Discord message
+
+### Inside the black box
 
 With my framework, agents are simple to implement. For it to have a prompt, we merely need to create and feed a file `{CoderAgent_base_dir}/prompts/CoderAgent.conv`. Nothing more, it will work.
 
-**Naive approach: Give it all the code and all the tools:**
+#### **Agent flow**
 
+**Foreword**: I'm going to illustrate the flow of a given agent. The point is "if tool use: LLM prompted with the output. If not: last assistant message returned as agent's output". I put it as a spoiler so you can skip this part is that bit is clear.
+
+<details>
+  <summary>Single agent tool use flow</summary>
+
+If an agent has tools, each time a tool is used, the output of the tool will be given as a reply in the conversation with the LLM.
+
+Schematically:
+```yaml
+system: You're ShellAgent, you interact with an interactive shell with context persistence (like, if you go to a directory, the next command you'll run will happen in it)
+
+## Memory
+the project Foo is in /home/v/projects/Foo
+## Tools
+<tool name="shell">{shell command}</tool>
+```
+
+Running
+```python
+from agentix import Agent
+
+print(
+    Agent['ShellAgent'](
+        'can you tell me what the current git branch is for Foo ?'
+    )
+)
+```
+
+Running that code would print:
+> "The current branch is `master`"
+
+The states the conversation would be in:
+- **1**:
+```yaml
+system: You're ShellAgent, you interact with an interactive shell with context persistence (like, if you go to a directory, the next command you'll run will happen in it)
+
+## Memory
+the project Foo is in /home/v/projects/Foo
+## Tools
+<tool name="shell">{shell command}</tool>
+
+__-__
+
+user: can you tell me what the current git branch is for Foo ?
+```
+
+- **2**:
+```yaml
+system: You're ShellAgent, you interact with an interactive shell with context persistence (like, if you go to a directory, the next command you'll run will happen in it)
+
+## Memory
+the project Foo is in /home/v/projects/Foo
+## Tools
+<tool name="shell">{shell command}</tool>
+
+__-__
+
+user: can you tell me what the current git branch is for Foo ?
+
+__-__
+
+assistant:<tool name="shell">pwd</tool>
+```
+- **3**:
+The LLM replied with a tool use, so it will be prompted with the output, giving:
+```yaml
+system: You're ShellAgent, you interact with an interactive shell with context persistence (like, if you go to a directory, the next command you'll run will happen in it)
+
+## Memory
+the project Foo is in /home/v/projects/Foo
+## Tools
+<tool name="shell">{shell command}</tool>
+
+__-__
+
+user: can you tell me what the current git branch is for Foo ?
+
+__-__
+
+assistant: <tool name="shell">pwd</tool>
+
+__-__
+
+system: <toolResult>/home/v</toolResult>
+```
+
+- **5**:
+```yaml
+system: You're ShellAgent, you interact with an interactive shell with context persistence (like, if you go to a directory, the next command you'll run will happen in it)
+
+## Memory
+the project Foo is in /home/v/projects/Foo
+## Tools
+<tool name="shell">{shell command}</tool>
+
+__-__
+
+user: can you tell me what the current git branch is for Foo ?
+
+__-__
+
+assistant: <tool name="shell">pwd</tool>
+
+__-__
+
+system: <toolResult>/home/v</toolResult>
+
+__-__
+
+assistant: <tool name="shell">cd /home/v/projects/Foo</tool>
+
+__-__
+
+system: <toolResult></toolResult>
+
+__-__
+
+assistant: <tool name="shell">git status</tool>
+
+__-__
+
+system: <toolResult>On branch master
+nothing to commit, working tree clean</toolResult>
+
+__-__
+
+assistant: The current branch is `master`
+```
+
+</details>
+
+
+
+
+
+
+### Let's build `CoderAgent` part 1: **Naive approach: Give it all the code and all the tools:**
+
+If we give our agent the ability to run any shell command, all the files, and a way to write files, in principle, that should be enough to do absolutely anything (I insist on **in principle**. In practice that won't work, that's not a good approach)
 ```yaml
 system: You are CoderAgent.
 Here's all the code you could work on:
@@ -386,19 +601,22 @@ You're an AGI and work as a software engineer.
 <tool name="write_file" file_path="some/path">File content</tool>
 ```
 
-One crazy thing to think about is that, and agent with this very prompt would probably result in something AGIish with a smart enough LLM (though, we're talking LLMs from 2030 for that to have a chance to work).
-Said otherwise, what I described to this point could be enough to have an AGI if it runs on a LLM vastly smarter than current frontier models.
+I guess that at some point in the future, that alone would be AGIish already (with LLMs vastly smarter than current ones. We're talking GPT-7 or o4)
 
 If you have somewhat experimented with agentic, you may know how such an agent would behave already.
 
-With current LLMs, it would hallucinate a LOT.
+With current LLMs, it would:
+- Hallucinate a LOT.
+- Get stuck in loops
+- Not do what you asked for (except maybe for very trivial queries)
 
-**Swarm agentic approach, and why it's the way:**
-
+### Let's build `CoderAgent` part 2: **Tree of agents**
 You'll have to take my word on some of the things I'm about to write:
 - Today, we don't have LLMs smart enough for a single agent to automate my entire profession.
 - That said, if you break the workflow down to sub-workflows, current LLMs can probably automate more of them than you would expect.
 - The smaller an agent is, the less responsibility and tools it has, the more reliable and performant it will be.
+
+
 
 ```yaml
 system: You are CoderAgent.
