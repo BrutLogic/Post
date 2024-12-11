@@ -17,7 +17,7 @@ Yes, you read that title correctly. And yes, I'm actually serious about this.
 - I propose some high level key aspects of this agentic as a likely default. namely:
   - **Tree Of Agents**. 
   - **Agents as code**
-- We can't automate everything at once, but if you break down the decisional processes and actions, give each agent ONE responsibility, and make agents use agents, we probably CAN automate more than you think. Even with current LLMs
+- We can't automate everything at once, but if you break down decisional processes and actions, give each agent ONE responsibility and make agents use agents, we probably CAN automate more than you think with current LLMs
 
 ## About me
 
@@ -105,7 +105,7 @@ Starting with the Turing test (but it extends to "an entity that writes code"). 
 
 Let's break this down:
 
-1. **Language is Sequential**: What control flow could it be based upon ? Can you describe one other than: *It predicts one chunk after another*, that can be formulated: *It predicts the next "chunk" given all previous chunks, recursively* ?
+1. **Language is Sequential**: What control flow could it be based upon ? Can you describe one other than: *It predicts one chunk after another* that can be reformulated: *It predicts the next "chunk" given all previous chunks, recursively* ?
 
 Isn't talking, kind of NTP ?
 
@@ -298,7 +298,7 @@ _________
 
 ______________
 
-So, let's define this AGI `As a function`
+So, let's specify this AGI `As a function`. And let's call it `CoderAgent`
 
 ### CoderAgent part 1: `As a function`
 
@@ -321,6 +321,7 @@ def handle_message(msg):
     if msg['channel'] == 'coder-agent':
         Agent['CoderAgent'](msg['content'])
 # ☝️ This works by the way. You'll be able to do just that if you come to my Discord
+# Also, I have a pipeline to just talk out loud and it triggers agents
 ```
 
 ### CoderAgent part 2: `Implementation details`
@@ -380,6 +381,7 @@ You only have to do that. No import whatsoever anywhere, and you'll be able to u
 from agentix import Agent
 
 print(Agent['CoderAgent']('Do stuff plz'))
+# > Done lol.
 ```
 ________________
 
