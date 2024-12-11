@@ -43,7 +43,7 @@ I want to share my work, discuss it with people.
 
 ### How you can support me
 
-I'm launching a Patreon as well as Discord server (link in comment), where I'll share **ALL** my work. Past, present and future. I'd also do a few video calls each week to share my advancements, review code, discuss everyone's ideas. And create comprehensive walk-trough tutorials to get you to build awesome agentic ! 
+I'm launching [a Patreon](https://www.patreon.com/BrutLogic) as well as [Discord server](https://discord.gg/eXtysN5HAH), where I'll share **ALL** my work. Past, present and future. I'd also do a few video calls each week to share my advancements, review code, discuss everyone's ideas. And create comprehensive walk-trough tutorials to get you to build awesome agentic ! 
 
 
 
@@ -731,8 +731,8 @@ If you've read this far, thank you! Your interest means a lot. I'm hoping to bui
 - Help you implement any idea you can have
 
 You can support this work by:
-- Joining our Discord community (link in comments)
-- Supporting the project on Patreon
+- Joining my [Discord community](https://discord.gg/eXtysN5HAH)
+- Supporting the project [on Patreon](https://www.patreon.com/BrutLogic)
 - Sharing this post with. Or talk about it in a Youtube video with a thumbnail showing your "Shush" face with your finger on your lips. (Because... it's a secret I guess ?)
 
 
