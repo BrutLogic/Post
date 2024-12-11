@@ -15,13 +15,13 @@ Yes, you read that title correctly. And yes, I'm actually serious about this.
 - There is such a thing as a *default path* to AGI.
 - I propose **Agentic over Next Token Prediction** as the default next step on that path.
 - I propose some high level key aspects of this agentic as a likely default. namely:
-  - **Tree Of Agents**. (We can't automate everything at once, but if you break down the decisional processes and actions, give each agent ONE responsibility, and make agents use agents, we probably CAN automate more than you think. Even with current LLMs)
+  - **Tree Of Agents**. 
+  - **Agents as code**
+- We can't automate everything at once, but if you break down the decisional processes and actions, give each agent ONE responsibility, and make agents use agents, we probably CAN automate more than you think. Even with current LLMs
 
 ## About me
 
 I'm diagnosed as smart (Not to brag, but my IQ has three digits), but also as autistic with severe ADHD and DID. About that last one - I wouldn't take offense if you don't believe it's real. In full transparency, I'm sometimes skeptical myself about most people who claim to have it. The relevant part is: I occasionally lose 6 hours of my life, and code mysteriously appears. While I'm a strong advocate for clean code and TDD, some part of me (let's call him Anakin) doesn't really care. That part does agentic development.
-
-You might find my writing style... unique. I've been told I get stuck in flows of verbal diarrhea (in French, we call it a "tunnel"). I'll try my best to stay on point.
 
 
 Now, I think my approach to AGI is correct - but then again, thinking you're right is basically what having an opinion means. And as Buddha wisely noted:
@@ -41,10 +41,11 @@ To make this extensive technical discussion digestible:
 
 I want to share my work, discuss it with people. 
 
+### How you can support me
+
 I'm launching a Patreon as well as Discord server (link in comment), where I'll share **ALL** my work. Past, present and future. I'd also do a few video calls each week to share my advancements, review code, discuss everyone's ideas. And create comprehensive walk-trough tutorials to get you to build awesome agentic ! 
 
 
-### How you can support me
 
 **I won't lie: if you like this post, and decide to share it on Youtube/tXitter/MSN Messenger, that would be greatly appreciated. And I can't overstate how much it would genuinely help me.**
 
@@ -57,7 +58,7 @@ I'm launching a Patreon as well as Discord server (link in comment), where I'll 
 
 
 
-**The point I'll try to make**: from where we are now to AGI, I believe there is a default path that. And that, this path can be reasoned about.
+**The point I'll try to make**: from where we are now to AGI, I believe there is a default path, and that this path can be reasoned about.
 
 ## Technical Foundation
 
@@ -74,10 +75,10 @@ graph LR
 
 The point of that heuristic is that, whenever you want to code something, you can (and should) think separately about:
 - The behavior you expect at use time. What it does from an outside perspective (as a function). ie: what outputs and side effects for a given input
-- The implementation detail (what's inside the black box)
+- The implementation details (what's inside the black box)
 
 
-You can do it with anything, even humans (you'll see why it's useful later)
+You can do it with anything, even humans (which will be useful later)
 
 **Me, remote Software Engineer `As a function`**: I take inputs (requirements, emails, coffee ☕) and produce outputs (code, messages) with side effects (deploying features, updating repositories)
 
@@ -159,7 +160,7 @@ def generate_response(context: str) -> str:
             return response
         response += next_word
 ```
-
+_________________
 
 
 ### From Text Generation to Agency
@@ -219,6 +220,7 @@ To sum up everything to this point:
 - The next step after LLM as chatbot (`As a function`: text=>text) is to give the LLM ability to "do stuff" + "gather information"
 - The end goal is to automate "a competent Software Engineer"
 
+________________
 
 To understand what we're trying to automate, let's break down how I function as a software engineer:
 
@@ -527,13 +529,14 @@ B --> E[LLM]
     G -->|Add tool's output to the conversation| E
 ```
 
+</details>
 ______________
 
 #### **CoderAgent part 2.2**: How we can approach implementing CoderAgent
 
 **Naive approach: Give it all the code and all the tools:**
 
-If we give our agent the ability to run any shell command, all the files, and a way to write files, in principle, that should be enough to do absolutely anything (I insist on **in principle**. In practice that won't work and that's not a good approach)
+If we give our agent the ability to run any shell command, all the files, and a way to write files, in principle, that should be enough to do absolutely anything (I insist on **in principle**. In practice that won't work at all and that's not a good approach)
 
 ```yaml
 system: You are CoderAgent. You're an AGI and work as a software engineer.
